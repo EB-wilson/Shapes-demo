@@ -1,3 +1,4 @@
+using Shapes.Components;
 using Shapes.Logic;
 
 namespace Shapes.Utils
@@ -8,12 +9,13 @@ namespace Shapes.Utils
     public static class GlobalVars
     {
         //settings
-        public static float playerCameraHeight = 20;
+        public static float cameraHeightOffset = 0;
 
         public static bool switchStatToggle = false;
         public static bool isOrthographicView = false;
 
         //global context
         public static World world;
+        public static PlayerStatus player;
     }
 }

@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a382d6aa57e24b649a4157555e1c963a,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -525,7 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamePanel: {fileID: 139766180}
   viewTexture: {fileID: 8400000, guid: 61639768810c9b94ba851645348a98ff, type: 2}
-  viewScale: 10
+  viewScale: 20
   padding: 10
 --- !u!1 &410087039
 GameObject:
@@ -762,6 +763,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &900814852
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3128498686354922788, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_Name
+      value: Frag-Enermy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095236781810659786, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349338409740593231, guid: 21137895068c3b14a91f82744f9cf5dd,
+        type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21137895068c3b14a91f82744f9cf5dd, type: 3}
 --- !u!1 &1264011430
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +848,8 @@ GameObject:
   - component: {fileID: 1264011432}
   - component: {fileID: 1264011431}
   - component: {fileID: 1264011434}
+  - component: {fileID: 1264011435}
+  - component: {fileID: 1264011436}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -871,22 +947,59 @@ MonoBehaviour:
     serializedVersion: 2
     x: -10
     y: 0
-    width: 80
-    height: 500
+    width: 160
+    height: 2000
   viewPortBounds:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 60
-    height: 100
+    width: 120
+    height: 160
   viewPort:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 30
-    height: 50
+    width: 60
+    height: 80
+  playerHeight: 18
+  cameraHeight: 40
   boundLen: 3
   velMul: 2
+--- !u!114 &1264011435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264011430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28a6bf1f6814c9bbae55a41d7b56357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pause: 0
+  taskQueue:
+  - {fileID: 1264011436}
+  time: 0
+--- !u!114 &1264011436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264011430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14aac59190b460bb67985c6b16deff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 60
+  beginTime: 0
+  paused: 0
+  time: 0
+  from: 0
+  to: -2000
+  world: {fileID: 0}
 --- !u!1 &1831545529
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1093,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902dc83e6faf4453a4b0d236de7107c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  score: 0
+  power: 0
+  balance: 0
 --- !u!1 &2119706218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,3 +1154,4 @@ SceneRoots:
   - {fileID: 344555568}
   - {fileID: 745401434}
   - {fileID: 2119706220}
+  - {fileID: 900814852}

@@ -34,8 +34,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,9 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfafd3d3d6d348aface2285b751f0b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 22
-  hasten: 120
-  drag: 120
+  speed: 45
+  hasten: 240
+  drag: 240
 --- !u!114 &7720560779663981115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293a3da98172424db01b4fadda7cfdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: {fileID: 89298659757581330, guid: 539a64e9f1536ad4f9a89a840c29a318,
+  bulletType: {fileID: -7874363521123377552, guid: 539a64e9f1536ad4f9a89a840c29a318,
     type: 3}
 --- !u!114 &4776002131533842608
 MonoBehaviour:

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Shapes.Utils;
 using UnityEngine;
 
@@ -8,7 +6,7 @@ public class ViewLogic : MonoBehaviour
 {
     public RectTransform gamePanel;
     public RenderTexture viewTexture;
-    public float viewScale = 10;
+    public float viewScale = 20;
     public float padding;
 
     [NonSerialized] public Canvas view;

@@ -17,8 +17,9 @@ namespace Shapes.Logic
                 int n = i - 2;
                 Bullet bull = Instantiate(bulletType);
                 bull.flag = shooter.flag;
+                bull.owner = shooter;
                 var position = shooter.transform.position;
-                bull.transform.position = new Vector3(position.x + n/2f, position.y, position.z - Mathf.Abs(n/4f));
+                bull.transform.position = new Vector3(position.x + n, position.y, position.z - Mathf.Abs(n/2f));
                 bull.direction = 90;
                 g.add(bull);
             }

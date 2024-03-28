@@ -5,23 +5,20 @@ namespace Shapes.Components
 {
     /// <summary>
     /// 该组件为实体提供直接操控速度的运动功能，为有效的高精度平滑运动控制提供基础。
-    /// 注意：该组件仅提供基础的运动控制，不提供任何物理特性。不应当与<see cref="Rigidbody"/>结合使用
+    /// 注意：该组件仅提供基础的运动控制，不提供任何物理特性。不应当在采用动量的同时仍使用<see cref="Rigidbody"/>控制运动，这会产生一些很奇怪的问题。
     /// </summary>
-    [RequireComponent(typeof(Transform))]
     public class Motion : MonoBehaviour
     {
         public Vector3 vel;
         public bool facingVelDir;
         public bool paused;
 
-        [NonSerialized] public Transform selfPos;
-
         public float speed
         {
-            get { return vel.magnitude; }
+            get => vel.magnitude;
             set {
                 var v = vel.normalized;
-                if (v.magnitude <= 0) { v = selfPos.rotation * new Vector3(1, 0, 0); }
+                if (v.magnitude <= 0) { v = transform.rotation * new Vector3(1, 0, 0); }
 
                 vel = v * value;
             }
@@ -29,18 +26,23 @@ namespace Shapes.Components
 
         void Start()
         {
-            selfPos = transform;
+            var rigidBody = GetComponent<Rigidbody>();
+
+            if (rigidBody == null) return;
+            rigidBody.useGravity = false;
+            rigidBody.drag = 0;
+            rigidBody.angularDrag = 0;
         }
 
-        void Update()
+        private void Update()
         {
             if (paused) return;
 
-            selfPos.position += vel*Time.deltaTime;
-            if (facingVelDir)
-            {
-                selfPos.forward = selfPos.position + vel;
-            }
+            transform.position += vel * Time.deltaTime;
+
+            if (!facingVelDir) return;
+            var trans = transform;
+            trans.forward = trans.position + vel;
         }
 
         public void stop()
@@ -55,12 +57,12 @@ namespace Shapes.Components
 
         public void move(Vector3 vec)
         {
-            selfPos.position += vec;
+            transform.position += vec;
         }
 
         public void setVel(float sx, float sy, float sz)
         {
-            setVel(sx, sy, sz);
+            setVel(new Vector3(sx, sy, sz));
         }
 
         public void setVel(Vector3 vec)

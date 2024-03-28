@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Shapes.Utils;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,14 +12,17 @@ namespace Shapes.Components
     {
         public int flag;
         public float damage;
-        public bool pierce;
+        public int pierce;
         public float lifetime = 10;
 
         public float speed;
-        public float time;
         public float direction;
 
+        [NonSerialized] public float time;
         [NonSerialized] public Motion motion;
+        [NonSerialized] public Shooter owner;
+
+        private List<Hittable> collided = new();
 
         void Start()
         {
@@ -37,9 +41,12 @@ namespace Shapes.Components
             GlobalVars.world.checkBullet(this);
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<Hittable>() == null) return; //only hit hittable
+            var hittable = other.gameObject.GetComponent<Hittable>();
+            if (hittable == null || hittable.flag == flag || collided.Contains(hittable)) return; //only hit hittable enemy
+            hittable.onHit(this);
+            collided.Add(hittable);
 
             var health = other.gameObject.GetComponent<Health>();
             if (health != null)
@@ -47,7 +54,7 @@ namespace Shapes.Components
                 health.damage(damage);
             }
 
-            if (!pierce)
+            if (pierce >= 0 && collided.Count > pierce)
             {
                 Destroy(gameObject);
             }

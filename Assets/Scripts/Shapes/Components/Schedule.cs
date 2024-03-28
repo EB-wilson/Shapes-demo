@@ -10,9 +10,19 @@ namespace Shapes.Components
     {
         public bool pause;
 
-        public Queue<Task> taskQueue = new();
+        public List<Task> taskQueue = new();
+
+        public float time;
 
         public int queueTasks => taskQueue.Count;
+
+        private void Start()
+        {
+            foreach (var task in taskQueue)
+            {
+                task.init();
+            }
+        }
 
         private void Update()
         {
@@ -23,25 +33,21 @@ namespace Shapes.Components
         {
             if (pause) return;
 
+            time += timeDelta;
+
             if (!taskQueue.Any()) return;
-            var exec = taskQueue.Peek();
 
-            exec.update(timeDelta);
-
-            if (exec.isComplete)
-            {
-                taskQueue.Dequeue();
-            }
-
-            foreach (var task in taskQueue.Where(task => task != exec && task.async && !task.isComplete))
+            foreach (var task in taskQueue.Where(task => !task.isComplete && task.beginTime <= time))
             {
                 task.update(timeDelta);
             }
+
+            taskQueue.RemoveAll(t => t.isComplete);
         }
 
         public void addTask(Task task)
         {
-            taskQueue.Enqueue(task);
+            taskQueue.Add(task);
             task.init();
         }
 
@@ -49,8 +55,9 @@ namespace Shapes.Components
         {
             if (!taskQueue.Any()) return;
 
-            var posted = taskQueue.Dequeue();
+            var posted = taskQueue.First();
             posted.finalize();
+            taskQueue.RemoveAt(0);
         }
 
         public void clearTasks(bool post)

@@ -16,6 +16,9 @@ namespace Shapes.Logic
         public Rect viewPortBounds;
         public Rect viewPort;
 
+        public float playerHeight = 10;
+        public float cameraHeight = 20;
+
         public float boundLen = 3;
         public float velMul = 2;
 
@@ -67,7 +70,7 @@ namespace Shapes.Logic
         {
             cam.orthographicSize = viewPort.height/2;
             cam.aspect = viewPort.width/viewPort.height;
-            cam.fieldOfView = 2.0f * Mathf.Atan(viewPort.height/2/GlobalVars.playerCameraHeight) * Mathf.Rad2Deg;
+            cam.fieldOfView = 2.0f * Mathf.Atan(viewPort.height/2/(cameraHeight + GlobalVars.cameraHeightOffset)) * Mathf.Rad2Deg;
 
             var widthDis = viewPortBounds.width - viewPort.width;
             var heightDis = viewPortBounds.height - viewPort.height;
@@ -80,7 +83,7 @@ namespace Shapes.Logic
             var trans = cam.transform;
             var pos = new Vector3(
                 viewPortBounds.x + viewPort.width/2 + widthDis * xRate,
-                pl.y + GlobalVars.playerCameraHeight,
+                pl.y + cameraHeight + GlobalVars.cameraHeightOffset,
                 viewPortBounds.y + viewPort.height/2 + heightDis * yRate
             );
             trans.position = pos;

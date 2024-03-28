@@ -13,7 +13,7 @@ namespace Shapes.Components
         public PlayerControllable2D hikari;
         public PlayerControllable2D tairitsu;
 
-        public Camera camera;
+        public new Camera camera;
 
         protected PlayerControllable2D cur;
         protected PlayerControllable2D sub;
@@ -22,8 +22,7 @@ namespace Shapes.Components
         private Transform selfPos;
         private Controllable2D selfCont;
 
-        //public GameObject wingmanPrefab;
-        void Start()
+        private void Start()
         {
             selfPos = transform;
             selfCont = GetComponent<Controllable2D>();
@@ -33,8 +32,12 @@ namespace Shapes.Components
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
+            var plpos = selfPos.position;
+            plpos = new Vector3(plpos.x, GlobalVars.world.playerHeight, plpos.z);
+            selfPos.position = plpos;
+
             sub.gameObject.SetActive(false);
             cur.gameObject.SetActive(true);
 

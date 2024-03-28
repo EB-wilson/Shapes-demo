@@ -9,14 +9,6 @@ namespace Shapes.Components
     {
         public int flag;
 
-        private void OnCollisionEnter(Collision other)
-        {
-            var bullet = other.gameObject.GetComponent<Bullet>();
-            if (bullet == null) return; //cannot hit by non bullet entity
-
-            if (flag != bullet.flag) onHit(bullet);
-        }
-
         public abstract void onHit(Bullet bullet);
     }
 }

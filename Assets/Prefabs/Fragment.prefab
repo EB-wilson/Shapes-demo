@@ -32,13 +32,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6748613570711036015}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.24731418, y: -0.49626267, z: 0.33217123, w: 0.76303434}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -57, z: 21.7}
 --- !u!33 &-3957693457868369526
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293a3da98172424db01b4fadda7cfdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletType: {fileID: 89298659757581330, guid: 539a64e9f1536ad4f9a89a840c29a318,
+  bulletType: {fileID: -7874363521123377552, guid: 539a64e9f1536ad4f9a89a840c29a318,
     type: 3}
 --- !u!114 &6471480274961073891
 MonoBehaviour:
@@ -167,9 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfafd3d3d6d348aface2285b751f0b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
-  hasten: 320
-  drag: 160
+  speed: 80
+  hasten: 600
+  drag: 340
 --- !u!114 &3342356851511579978
 MonoBehaviour:
   m_ObjectHideFlags: 0

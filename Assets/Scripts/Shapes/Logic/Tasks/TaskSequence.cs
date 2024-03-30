@@ -24,7 +24,15 @@ namespace Shapes.Logic
 
         public override void update(float timeDelta)
         {
-            if (isComplete) return;
+            if (isComplete)
+            {
+                if (circle)
+                {
+                    reset();
+                }
+                return;
+            }
+
             var task = tasks[executing];
 
             if (!task.paused)

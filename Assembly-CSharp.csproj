@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Shapes\Components\Controllable2D.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Schedule.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\TaskCirculate.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Logic.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\PlayerHittable.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\GenerateTask.cs" />

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Shapes.Logic
@@ -8,7 +9,8 @@ namespace Shapes.Logic
     /// </summary>
     public class TaskGroup : Task
     {
-        public readonly List<Task> tasks = new();
+        public List<Task> tasks = new();
+        public bool circle;
 
         public TaskGroup(params Task[] tasks)
         {
@@ -31,7 +33,7 @@ namespace Shapes.Logic
             duration = 0;
             foreach (var task in tasks)
             {
-                duration = Mathf.Max(duration, task.duration);
+                duration = Mathf.Max(duration, task.time + task.duration);
                 task.init();
             }
         }
@@ -56,11 +58,16 @@ namespace Shapes.Logic
 
         public override void update(float timeDelta)
         {
-            foreach (var task in tasks)
+            time += timeDelta;
+
+            foreach (var task in tasks.Where(task => !(task.time < time)))
             {
                 task.update(timeDelta);
+            }
 
-                time = Mathf.Max(task.time, time);
+            if (isComplete && circle)
+            {
+                reset();
             }
         }
 

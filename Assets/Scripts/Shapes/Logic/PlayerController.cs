@@ -1,5 +1,6 @@
 using Shapes.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Shapes.Components
 {
@@ -10,10 +11,10 @@ namespace Shapes.Components
     [RequireComponent(typeof(Transform), typeof(Controllable2D), typeof(PlayerStatus))]
     public class PlayerController : MonoBehaviour
     {
-        public PlayerControllable2D hikari;
-        public PlayerControllable2D tairitsu;
+        public PlayerControllable2D normalStat;
+        public PlayerControllable2D shiftStat;
 
-        public new Camera camera;
+        public Camera cam;
 
         protected PlayerControllable2D cur;
         protected PlayerControllable2D sub;
@@ -27,8 +28,8 @@ namespace Shapes.Components
             selfPos = transform;
             selfCont = GetComponent<Controllable2D>();
 
-            cur = Instantiate(tairitsu, selfPos, false);
-            sub = Instantiate(hikari, selfPos, false);
+            cur = Instantiate(normalStat, selfPos, false);
+            sub = Instantiate(shiftStat, selfPos, false);
         }
 
         // Update is called once per frame
@@ -38,12 +39,15 @@ namespace Shapes.Components
             plpos = new Vector3(plpos.x, GlobalVars.world.playerHeight, plpos.z);
             selfPos.position = plpos;
 
-            sub.gameObject.SetActive(false);
             cur.gameObject.SetActive(true);
+            sub.gameObject.SetActive(false);
 
             selfCont.speed = cur.speed;
             selfCont.hasten = cur.hasten;
             selfCont.drag = cur.drag;
+
+            var n = status ? 1 : -1;
+            GlobalVars.player.balance = Mathf.Clamp01(GlobalVars.player.balance + cur.balanceOffSpeed*n*Time.deltaTime);
 
             Vector2 v = new Vector2();
 
@@ -89,7 +93,7 @@ namespace Shapes.Components
             }
 
             GlobalVars.world.clamp(selfCont);
-            GlobalVars.world.syncCamera(selfCont, camera);
+            GlobalVars.world.syncCamera(selfCont, cam);
         }
 
         private void switchStatus()

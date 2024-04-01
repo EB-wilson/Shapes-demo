@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Shapes.Logic
 {
-    public class MoveForwardTask: Task
+    public class MoveForwardTask: ScheduleTask
     {
         public float moveSpeed;
         public Vector3 moveRot;

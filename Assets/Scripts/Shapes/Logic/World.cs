@@ -20,6 +20,7 @@ namespace Shapes.Logic
         public float cameraHeight = 20;
 
         public float boundLen = 3;
+        public float clampBound = 50;
         public float velMul = 2;
 
         [NonSerialized] public Terrain terrain;
@@ -51,18 +52,18 @@ namespace Shapes.Logic
             target.motion.hasten(new Vector3(diff.x, 0, diff.y));
         }
 
-        public void checkBullet(Bullet bullet)
+        public void checkBullet(Transform obj)
         {
-            var pos = bullet.transform.position;
+            var pos = obj.position;
             var bound = new Rect(
-                viewPortBounds.x - boundLen,
-                viewPortBounds.y - boundLen,
-                viewPortBounds.width + boundLen*2,
-                viewPortBounds.height + boundLen*2
+                viewPortBounds.x - clampBound,
+                viewPortBounds.y - clampBound,
+                viewPortBounds.width + clampBound*2,
+                viewPortBounds.height + clampBound*2
             );
             if (!bound.Contains(new Vector2(pos.x, pos.z)))
             {
-                Destroy(bullet.gameObject);
+                Destroy(obj.gameObject);
             }
         }
 

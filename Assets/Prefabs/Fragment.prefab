@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3377442959356654331}
   - component: {fileID: 5911705568011819414}
   - component: {fileID: 2513703777563928492}
-  - component: {fileID: 1237267068934877858}
   - component: {fileID: 6471480274961073891}
   - component: {fileID: 3342356851511579978}
+  - component: {fileID: -7362923669439100772}
   m_Layer: 0
   m_Name: Fragment
   m_TagString: Untagged
@@ -32,13 +32,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6748613570711036015}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24731418, y: -0.49626267, z: 0.33217123, w: 0.76303434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.02, y: 2.02, z: 2.02}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: -57, z: 21.7}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &-3957693457868369526
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -138,23 +138,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
-  shootInterval: 0.06
-  shootPattern: {fileID: 1237267068934877858}
+  shootOffset: {x: 0, y: 0, z: 0}
+  shootPos: {fileID: 0}
+  overrideDir: 0
+  shootRotation: {x: 0, y: 0, z: 0, w: 1}
+  shootInterval: 0.4
+  shootPattern: {fileID: -7362923669439100772}
   shooting: 0
---- !u!114 &1237267068934877858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748613570711036015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293a3da98172424db01b4fadda7cfdd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletType: {fileID: -7874363521123377552, guid: 539a64e9f1536ad4f9a89a840c29a318,
-    type: 3}
 --- !u!114 &6471480274961073891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +160,7 @@ MonoBehaviour:
   speed: 65
   hasten: 680
   drag: 640
+  balanceOffSpeed: 0.1
 --- !u!114 &3342356851511579978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +174,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
+--- !u!114 &-7362923669439100772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748613570711036015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24635e2c0f1a4c09ab5d918647095efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoots: 21
+  shootInterval: 0.1
+  bullet:
+  - {fileID: 6991809282617596221, guid: 3edbe79d6672dc04b802bb3468e100b7, type: 3}
+  - {fileID: 5977393156124859400, guid: 4db27f85ea641c54ca190ab0d6ed6981, type: 3}
+  - {fileID: -7874363521123377552, guid: 539a64e9f1536ad4f9a89a840c29a318, type: 3}
+  - {fileID: -7874363521123377552, guid: 539a64e9f1536ad4f9a89a840c29a318, type: 3}
+  - {fileID: -7874363521123377552, guid: 539a64e9f1536ad4f9a89a840c29a318, type: 3}
+  - {fileID: 5977393156124859400, guid: 4db27f85ea641c54ca190ab0d6ed6981, type: 3}
+  - {fileID: 6991809282617596221, guid: 3edbe79d6672dc04b802bb3468e100b7, type: 3}
+  shootBarrels:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -25, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -15, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 5, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 15, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 25, z: 0}
+  group: 7

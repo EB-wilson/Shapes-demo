@@ -11,6 +11,8 @@ namespace Shapes.Logic
         void Update()
         {
             camera.orthographic = GlobalVars.isOrthographicView;
+
+            Times.updateTask();
         }
     }
 }

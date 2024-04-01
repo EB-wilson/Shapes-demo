@@ -10,7 +10,7 @@ namespace Shapes.Components
         public float score;
         public float power;
 
-        public float balance;
+        public float balance = 0.5f;
 
         private void Awake()
         {

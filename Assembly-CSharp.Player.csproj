@@ -47,14 +47,16 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Shapes\Components\Controllable2D.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Schedule.cs" />
-    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\TaskCirculate.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\MotionSpeedControlTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Logic.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\PlayerHittable.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\DirectionShootTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\GenerateTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Utils\Interps.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Health.cs" />
     <Compile Include="Assets\Scripts\Shapes\Utils\GlobalVars.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\TaskSequence.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\ShootPatterns\MultiShootPattern.cs" />
     <Compile Include="Assets\Scripts\Shapes\Utils\Bindings.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\WorldMoveTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Utils\BulletGroup.cs" />
@@ -65,17 +67,23 @@
     <Compile Include="Assets\Scripts\Shapes\UI\ViewLogic.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\World.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\MovementTask.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\ShootPatterns\SerialShoot.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\TaskGroup.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\AnchorsGenerateTask.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\MotionControlTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Utils\Math.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Utils\Times.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\PlayerStatus.cs" />
-    <Compile Include="Assets\Scripts\Shapes\Logic\ShootPattern.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\ShootControlTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\PlayerControllable2D.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\ShootPatterns\ShootPattern.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Hittable.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Shooter.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\PlayerShooter.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Motion.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\BezierMoveTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\MoveForwardTask.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\ShootPatterns\BarrelsShoot.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\PlayerController.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.17f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.dll</HintPath>

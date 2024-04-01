@@ -4,6 +4,8 @@ namespace Shapes.Utils
 {
     public class Math
     {
+        public static readonly int[] single = { -1, 1 };
+
         public static float angle(float x, float y)
         {
             if (x == 0) return y > 0? 90: 270;

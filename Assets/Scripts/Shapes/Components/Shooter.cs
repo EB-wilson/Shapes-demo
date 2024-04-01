@@ -9,12 +9,33 @@ namespace Shapes.Components
     public class Shooter : MonoBehaviour
     {
         public int flag;
+        public Vector3 shootOffset;
 
-        [NonSerialized] public Transform selfPos;
+        public Transform shootPos;
+        public bool overrideDir;
 
-        void Start()
+        public Quaternion shootRotation;
+
+        private void Start()
         {
-            selfPos = transform;
+            if (shootPos == null)
+            {
+                shootPos = transform;
+            }
+            else
+            {
+                overrideDir = true;
+            }
+        }
+
+        public virtual void shoot(Bullet bullet, Vector3 offset, Quaternion shootDirOffset)
+        {
+            var rotation = overrideDir? shootRotation: shootPos.rotation;
+            bullet.create(
+                this,
+                shootPos.position + rotation * (offset + shootOffset),
+                shootDirOffset * rotation
+            );
         }
     }
 }

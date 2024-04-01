@@ -45,6 +45,11 @@ namespace Shapes.Utils
             bullets.Add(bullet);
         }
 
+        public void addAll(BulletGroup other)
+        {
+            bullets.AddRange(other.bullets);
+        }
+
         public void remove(Bullet bullet)
         {
             bullets.Remove(bullet);

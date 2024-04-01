@@ -42,7 +42,7 @@ namespace Shapes.Components
 
             if (!facingVelDir) return;
             var trans = transform;
-            trans.forward = trans.position + vel;
+            trans.LookAt(trans.position + vel);
         }
 
         public void stop()

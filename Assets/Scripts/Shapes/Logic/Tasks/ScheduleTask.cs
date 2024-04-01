@@ -7,7 +7,7 @@ namespace Shapes.Logic
     /// <summary>
     /// 时间表事务的基类，提供了时间表执行任务的进度管理等相关API，行为抽象，待实现
     /// </summary>
-    public abstract class Task: MonoBehaviour
+    public abstract class ScheduleTask: MonoBehaviour
     {
         /// <summary>
         /// 此任务进行的标准时间，若为0，则此任务将在一次更新中完成所有流程并结束；如果为负数，则此任务会永远运行下去，直到调用<see cref="finalize"/>停止此任务

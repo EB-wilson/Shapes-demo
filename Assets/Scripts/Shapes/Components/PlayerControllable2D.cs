@@ -5,6 +5,8 @@ namespace Shapes.Components
 {
     public class PlayerControllable2D : Controllable2D
     {
+        public float balanceOffSpeed = 0.1f;
+
         [NonSerialized] public PlayerShooter shooter;
 
         private void Start()

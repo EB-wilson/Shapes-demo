@@ -2,28 +2,26 @@ using UnityEngine;
 
 namespace Shapes.Logic
 {
-    public class MovementTask: Task
+    public class MovementTask: ScheduleTask
     {
         public Vector3 moveVec;
-        public Vector3 rotateVec;
+        public Quaternion moveRot;
 
         private Vector3 beginPos;
-        private Vector3 beginRot;
-
-        private Transform selfTrans;
+        private Quaternion beginRot;
 
         protected override void begin()
         {
-            // 记录初始位置和旋转
-            selfTrans = transform;
-            beginPos = selfTrans.position;
-            beginRot = selfTrans.eulerAngles;
+            var trans = transform;
+            beginPos = trans.position;
+            beginRot = trans.rotation;
         }
 
         protected override void action()
         {
-            selfTrans.eulerAngles = beginRot + rotateVec * progress;
-            selfTrans.position = beginPos + moveVec * progress;
+            var trans = transform;
+            trans.rotation = Quaternion.Lerp(beginRot, moveRot, progress);
+            trans.position = beginPos + moveVec * progress;
         }
 
         protected override void post()

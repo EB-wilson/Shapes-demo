@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using Shapes.Logic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Shapes.Components
@@ -9,12 +11,11 @@ namespace Shapes.Components
     public class Schedule : MonoBehaviour
     {
         public bool pause;
-
-        public List<Task> taskQueue = new();
+        public List<ScheduleTask> taskQueue;
 
         public float time;
 
-        public int queueTasks => taskQueue.Count;
+        public int queueTasks => taskQueue.Count();
 
         private void Start()
         {
@@ -45,7 +46,7 @@ namespace Shapes.Components
             taskQueue.RemoveAll(t => t.isComplete);
         }
 
-        public void addTask(Task task)
+        public void addTask(ScheduleTask task)
         {
             taskQueue.Add(task);
             task.init();

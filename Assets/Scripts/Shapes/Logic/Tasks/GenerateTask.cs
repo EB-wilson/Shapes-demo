@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Shapes.Logic
 {
-    public class GenerateTask: Task
+    public class GenerateTask: ScheduleTask
     {
         public GameObject generatePrefab;
         public Vector3 position;
@@ -25,7 +25,8 @@ namespace Shapes.Logic
             var prog = duration < 0? Mathf.Clamp01(time): progress;
 
             if (prog < generatedCount * genStep) return;
-            Instantiate(generatePrefab, position + genOffset*generatedCount, rotation);
+            var inst = Instantiate(generatePrefab, position + genOffset*generatedCount, rotation);
+            inst.SetActive(true);
             generatedCount++;
         }
 

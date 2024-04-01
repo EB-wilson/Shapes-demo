@@ -7,12 +7,12 @@ namespace Shapes.Logic
     /// <summary>
     /// 时间表任务组，可同时批量执行多个任务，此任务运行直到所有任务被执行完毕
     /// </summary>
-    public class TaskGroup : Task
+    public class TaskGroup : ScheduleTask
     {
-        public List<Task> tasks = new();
+        public List<ScheduleTask> tasks = new();
         public bool circle;
 
-        public TaskGroup(params Task[] tasks)
+        public TaskGroup(params ScheduleTask[] tasks)
         {
             this.tasks.AddRange(tasks);
         }

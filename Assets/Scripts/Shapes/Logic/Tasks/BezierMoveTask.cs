@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,8 @@ namespace Shapes.Logic
     /// <summary>
     /// 贝塞尔曲线移动控制器，提供若干曲线控制点，随时间插值令携带该任务的物体沿着此贝塞尔曲线移动
     /// </summary>
-    public class BezierMoveTask: Task
+
+    public class BezierMoveTask: ScheduleTask
     {
         public List<Vector3> controlPoints = new();
         public int resolution = 100;
@@ -84,7 +86,7 @@ namespace Shapes.Logic
 
                 buffer[index] = s;
                 index++;
-                if ((i + 1) % 3 != 0 ||  i + 1 >= points.Count) continue;
+                if ((i + 1) % 3 != 0 || i + 1 >= points.Count) continue;
 
                 var n = points[i + 1];
                 buffer[index] = (s + n) / 2;

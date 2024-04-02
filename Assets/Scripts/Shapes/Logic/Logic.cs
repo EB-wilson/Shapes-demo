@@ -6,11 +6,11 @@ namespace Shapes.Logic
 {
     public class Logic : MonoBehaviour
     {
-        public Camera camera;
+        public Camera currCamera;
 
         void Update()
         {
-            camera.orthographic = GlobalVars.isOrthographicView;
+            currCamera.orthographic = GlobalVars.isOrthographicView;
 
             Times.updateTask();
         }

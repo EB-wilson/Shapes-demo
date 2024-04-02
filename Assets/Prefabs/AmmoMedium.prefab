@@ -76,7 +76,15 @@ MonoBehaviour:
   pierce: 0
   lifetime: 10
   speed: 125
-  direction: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0, w: 0}
+  fragmentBullet: {fileID: 0}
+  frags: 1
+  fragSpeedSclMin: 1
+  fragSpeedSclMax: 1
+  fragLifeSclMin: 1
+  fragLifeSclMax: 1
+  fragSpreadRange: {x: 180, y: 180, z: 180}
+  fragOnHit: 1
 --- !u!114 &1706011605963025591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +189,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 935a42a88bb73f74facfdb1ac9ae5f55, type: 2}
+  - {fileID: 2100000, guid: e34c4cd97a44f1c4887a91f277248f7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

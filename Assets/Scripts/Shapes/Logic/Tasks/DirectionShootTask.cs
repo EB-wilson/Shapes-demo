@@ -8,33 +8,32 @@ namespace Shapes.Logic
         public Quaternion shootEndRotation;
         public bool absolute;
 
-        private Quaternion beginRotation;
-        private int shootCount;
-
-        protected override void begin()
-        {
-            base.begin();
-            beginRotation = shooter.transform.rotation;
-            shootCount = 0;
-        }
+        public Vector3 spreadRange;
 
         protected override void action()
         {
-            if (shootCount/shoots > progress) return;
-
-            var shootRot = Quaternion.Lerp(shootBeginRotation, shootEndRotation, progress);
+            var prog = duration < 0? interp(Mathf.Clamp01(time)): progress;
+            var shootRot = Quaternion.Slerp(shootBeginRotation, shootEndRotation, prog);
+            var off = Quaternion.Euler(
+                Random.Range(-spreadRange.x, spreadRange.x),
+                Random.Range(-spreadRange.y, spreadRange.y),
+                Random.Range(-spreadRange.z, spreadRange.z)
+            );
 
             if (absolute)
             {
-                shooter.shootRotation = shootRot;
+                shooter.shootRotation = shootRot*off;
             }
             else
             {
-                shooter.shootRotation = beginRotation * shootRot;
+                shooter.shootRotation = transform.rotation * shootRot * off;
             }
+            base.action();
+        }
 
+        protected override void shoot()
+        {
             pattern.shoot(shooter);
-            shootCount++;
         }
     }
 }

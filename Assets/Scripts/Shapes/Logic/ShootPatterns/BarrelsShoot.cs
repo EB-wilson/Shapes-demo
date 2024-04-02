@@ -1,8 +1,8 @@
 using System;
 using Shapes.Components;
 using Shapes.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
-using Math = Shapes.Utils.Math;
 
 namespace Shapes.Logic
 {
@@ -29,6 +29,7 @@ namespace Shapes.Logic
             {
                 Times.run(() =>
                 {
+                    if(shooter.IsDestroyed()) return;
                     var n = shootCount*2 % shootBarrels.Length;
 
                     shooter.shoot(bullet[shootCount%bullet.Length], shooter.shootOffset + shootBarrels[n], Quaternion.Euler(shootBarrels[n + 1]));

@@ -23,6 +23,8 @@ namespace Shapes.Components
         private Transform selfPos;
         private Controllable2D selfCont;
 
+        public PlayerControllable2D current => cur;
+
         private void Start()
         {
             selfPos = transform;
@@ -30,6 +32,12 @@ namespace Shapes.Components
 
             cur = Instantiate(normalStat, selfPos, false);
             sub = Instantiate(shiftStat, selfPos, false);
+
+            Times.run(() =>
+            {
+                cur.shooter.isShift = false;
+                cur.shooter.isShift = true;
+            }, 0);
         }
 
         // Update is called once per frame

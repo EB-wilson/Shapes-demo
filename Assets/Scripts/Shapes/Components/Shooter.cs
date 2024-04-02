@@ -11,31 +11,23 @@ namespace Shapes.Components
         public int flag;
         public Vector3 shootOffset;
 
-        public Transform shootPos;
         public bool overrideDir;
-
         public Quaternion shootRotation;
 
-        private void Start()
-        {
-            if (shootPos == null)
-            {
-                shootPos = transform;
-            }
-            else
-            {
-                overrideDir = true;
-            }
-        }
+        public virtual float damageScl => 1;
 
         public virtual void shoot(Bullet bullet, Vector3 offset, Quaternion shootDirOffset)
         {
-            var rotation = overrideDir? shootRotation: shootPos.rotation;
+            var rotation = overrideDir? shootRotation: transform.rotation;
             bullet.create(
                 this,
-                shootPos.position + rotation * (offset + shootOffset),
-                shootDirOffset * rotation
+                transform.position + rotation * (offset + shootOffset),
+                damageScl,
+                1,
+                1,
+                rotation * shootDirOffset
             );
         }
+
     }
 }

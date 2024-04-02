@@ -1,4 +1,5 @@
 using System;
+using Shapes.Utils;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -32,7 +33,7 @@ namespace Shapes.Logic
         /// <summary>
         /// 任务执行进度的插值函数，输入一个从0到1的值，并产出一个在0到1之间的值
         /// </summary>
-        public Func<float, float> interp = f => f;
+        public Interp[] interps = { Interp.LINEAR };
 
         /// <summary>
         /// 此任务当前进行到的进度，已经过插值函数进行插值，若需要获取原始数据，请使用<see cref="progressNonInterp"/>
@@ -49,7 +50,9 @@ namespace Shapes.Logic
         private bool began;
         private bool posted;
 
-        public float progressNonInterp => posted? 1: duration < 0? 0: (duration == 0? 1: time / duration);
+        protected Func<float, float> interp;
+
+        public float progressNonInterp => posted? 1: duration < 0? 0: (duration == 0? 1: Mathf.Clamp01(time / duration));
 
         public virtual void update(float timeDelta)
         {
@@ -59,6 +62,7 @@ namespace Shapes.Logic
             if (!began)
             {
                 began = true;
+                interp = interps.Length == 0? f => f: Interps.make(interps);
                 begin();
             }
 

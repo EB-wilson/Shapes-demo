@@ -1,5 +1,6 @@
 using Shapes.Components;
 using Shapes.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Shapes.Logic
@@ -14,6 +15,7 @@ namespace Shapes.Logic
             {
                 Times.run(() =>
                 {
+                    if(shooter.IsDestroyed()) return;
                     shooter.shoot(bullet, Vector3.zero, Quaternion.identity);
                     shootCount++;
                 }, i*shootInterval);

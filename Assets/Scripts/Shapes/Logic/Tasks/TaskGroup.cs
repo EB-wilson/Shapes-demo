@@ -21,7 +21,7 @@ namespace Shapes.Logic
         {
             get
             {
-                return tasks.Find(e => !e.isComplete) == null;
+                return tasks.All(e => e.isComplete);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Shapes.Logic
         {
             time += timeDelta;
 
-            foreach (var task in tasks.Where(task => !(task.time < time)))
+            foreach (var task in tasks.Where(task => task.beginTime <= time && !task.isComplete))
             {
                 task.update(timeDelta);
             }

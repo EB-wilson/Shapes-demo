@@ -54,9 +54,6 @@ namespace Shapes.Components
             selfCont.hasten = cur.hasten;
             selfCont.drag = cur.drag;
 
-            var n = status ? 1 : -1;
-            GlobalVars.player.balance = Mathf.Clamp01(GlobalVars.player.balance + cur.balanceOffSpeed*n*Time.deltaTime);
-
             Vector2 v = new Vector2();
 
             if (Input.GetKey(Bindings.right)) { v += new Vector2(1, 0); }
@@ -88,16 +85,16 @@ namespace Shapes.Components
                 }
             }
 
-            if (Input.GetKeyDown(Bindings.fire))
-            {
-                cur.shooter.shooting = true;
-                sub.shooter.shooting = true;
-            }
 
-            if (Input.GetKeyUp(Bindings.fire))
+            var n = status ? 1 : 0;
+            if (Input.GetKey(Bindings.fire))
             {
-                cur.shooter.shooting = false;
-                sub.shooter.shooting = false;
+                cur.shooter.shooting();
+                GlobalVars.player.balance = Math.approach(GlobalVars.player.balance, n, cur.shootingBalanceOffSpeed*Time.deltaTime);
+            }
+            else
+            {
+                GlobalVars.player.balance = Math.approach(GlobalVars.player.balance, 0.5f, cur.balanceOffSpeed*Time.deltaTime);
             }
 
             GlobalVars.world.clamp(selfCont);

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5820551013159257388}
   - component: {fileID: 213782081358141873}
   - component: {fileID: 8849049014998561936}
+  - component: {fileID: 8215387414437721061}
   m_Layer: 0
   m_Name: Frag-Enermy
   m_TagString: Untagged
@@ -70,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be3a5fabeb97274281d02baad79cd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffect: {fileID: 4716488068994343593, guid: 76311c6b5e79ed1409e470a759659e48,
+    type: 3}
   binding: {fileID: 0}
   bound: 0
   maxHealth: 100
@@ -153,4 +156,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pause: 0
   taskQueue: []
+  destroyOnEnd: 1
+  autoInitTasks: 1
   time: 0
+--- !u!114 &8215387414437721061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128498686354922788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e525c709b9bf4f2d9fdf626636bef08e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flag: 1
+  shootOffset: {x: 0, y: 0, z: 0}
+  overrideDir: 0
+  shootRotation: {x: 0, y: 0, z: 0, w: 0}

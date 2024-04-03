@@ -5,6 +5,7 @@ namespace Shapes.Components
 {
     public class Health : MonoBehaviour
     {
+        public GameObject deathEffect;
         public Health binding;
         public bool bound;
 
@@ -14,9 +15,12 @@ namespace Shapes.Components
         public float health;
         public float shield;
 
+        private bool deathEffectNotNull;
+
         // Start is called before the first frame update
         void Start()
         {
+            deathEffectNotNull = deathEffect != null;
             bound = binding != null;
             health = maxHealth;
         }
@@ -92,16 +96,22 @@ namespace Shapes.Components
 
         private void syncBinding()
         {
-            if (bound) {
-                health = binding.health;
-                shield = binding.shield;
-            }
+            if (!bound) return;
+
+            health = binding.health;
+            shield = binding.shield;
         }
 
-        protected void shieldDestroyed(){}
+        protected virtual void shieldDestroyed(){}
 
-        protected void doDestroy()
+        protected virtual void doDestroy()
         {
+            if (deathEffectNotNull)
+            {
+                var trans = transform;
+                Instantiate(deathEffect, trans.position, trans.rotation);
+            }
+
             Destroy(gameObject);
         }
     }

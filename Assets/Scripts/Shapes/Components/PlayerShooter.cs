@@ -8,13 +8,13 @@ namespace Shapes.Components
     public class PlayerShooter : Shooter
     {
         public float shootInterval = 0.1f;
-        public ShootPattern shootPattern;
+        public ShootPattern[] shootPattern;
 
         public float minDamageScl = 0.4f;
         public float balanceMin = 0.2f;
         public float balanceMax = 0.6f;
 
-        public bool shooting;
+        //public bool shooting;
 
         [NonSerialized] public bool isShift;
         protected float lastShootTime;
@@ -28,16 +28,14 @@ namespace Shapes.Components
             }
         }
 
-        void Update()
+        public void shooting()
         {
-            if (shooting)
-            {
+
                 if (lastShootTime + shootInterval < Time.time)
                 {
                     lastShootTime = Time.time;
-                    shootPattern.shoot(this);
+                    shootPattern[Mathf.Min((int)GlobalVars.player.power, shootPattern.Length - 1)].shoot(this);
                 }
-            }
         }
     }
 }

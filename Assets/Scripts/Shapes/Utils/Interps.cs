@@ -38,7 +38,7 @@ namespace Shapes.Utils
         }
 
         private static Func<float, float> clamp(float min, float max) => f => Mathf.Clamp01(min + Mathf.Max(f - min, 0)/(max - min));
-        private static Func<float, float> powOut(float power) => f => MathF.Pow(f - 1, power) + 1;
+        private static Func<float, float> powOut(float power) => f => 1 - MathF.Pow(1 - f, power);
 
         public static Func<float, float> wrap(Func<float, float> fun, Func<float, float> wrap) => f => wrap(fun(f));
 

@@ -142,6 +142,7 @@ MonoBehaviour:
   hasten: 480
   drag: 480
   balanceOffSpeed: 0.1
+  shootingBalanceOffSpeed: 0.1
 --- !u!114 &7720560779663981115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +160,8 @@ MonoBehaviour:
   overrideDir: 0
   shootRotation: {x: 0, y: 0, z: 0, w: 0}
   shootInterval: 0.3
-  shootPattern: {fileID: 9181679813812240900}
+  shootPattern:
+  - {fileID: 9181679813812240900}
   minDamageScl: 0.4
   balanceMin: 0.2
   balanceMax: 0.6

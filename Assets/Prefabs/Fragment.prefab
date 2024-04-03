@@ -249,7 +249,8 @@ MonoBehaviour:
   overrideDir: 0
   shootRotation: {x: 0, y: 0, z: 0, w: 1}
   shootInterval: 0.4
-  shootPattern: {fileID: -7362923669439100772}
+  shootPattern:
+  - {fileID: -7362923669439100772}
   minDamageScl: 0.4
   balanceMin: 0.2
   balanceMax: 0.6
@@ -283,6 +284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
+  adsorptionRange: 8
+  pickupRange: 2
 --- !u!114 &-7362923669439100772
 MonoBehaviour:
   m_ObjectHideFlags: 0

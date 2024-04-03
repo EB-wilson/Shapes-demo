@@ -3,17 +3,17 @@ using UnityEngine.Serialization;
 
 namespace Shapes.Logic
 {
-    public class GenerateTask: ScheduleTask
+    public abstract class GenerateTask: ScheduleTask
     {
-        public GameObject generatePrefab;
-        public Vector3 genPosition;
-        public Quaternion genRotation;
-
+        public GameObject[] generatePrefabList;
+        public int[] generateIndex;
         public int generates = 1;
-        public Vector3 genOffset = new(0, 0, 0);
-        public Quaternion genRotOffset = new(0, 0, 0, 1);
+        public int generateBatch = 1;
 
-        private int generatedCount;
+        protected int generatedCount;
+
+        protected abstract Vector3 genPos(float prog);
+        protected abstract Quaternion genRot(float prog);
 
         protected override void begin()
         {
@@ -27,16 +27,25 @@ namespace Shapes.Logic
             var prog = duration < 0? interp(Mathf.Clamp01(time)): progress;
 
             if (prog < generatedCount * genStep) return;
-            var inst = Instantiate(generatePrefab,
-                genPosition + genOffset*prog,
-                Quaternion.Slerp(genRotation, genRotation * genRotOffset, prog)
+
+            for (var j = 0; j < generateBatch; j++)
+            {
+                var i = generateIndex[generatedCount % generateIndex.Length];
+                generate(generatePrefabList[i % generatePrefabList.Length], genPos(prog), genRot(prog));
+            }
+        }
+
+        protected void generate(GameObject gen, Vector3 pos, Quaternion rot)
+        {
+            var inst = Instantiate(
+                gen,
+                pos,
+                rot
             );
             inst.SetActive(true);
             generatedCount++;
         }
 
-        protected override void post()
-        {
-        }
+        protected override void post() { }
     }
 }

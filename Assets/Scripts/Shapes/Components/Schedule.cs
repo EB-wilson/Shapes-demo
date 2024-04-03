@@ -12,13 +12,20 @@ namespace Shapes.Components
     {
         public bool pause;
         public List<ScheduleTask> taskQueue;
+        public bool destroyOnEnd;
+        public bool autoInitTasks = true;
 
         public float time;
 
-        public int queueTasks => taskQueue.Count();
+        public int queueTasks => taskQueue.Count;
 
         private void Start()
         {
+            if (autoInitTasks)
+            {
+                taskQueue.AddRange(GetComponentsInChildren<ScheduleTask>());
+            }
+
             foreach (var task in taskQueue)
             {
                 task.init();
@@ -44,6 +51,11 @@ namespace Shapes.Components
             }
 
             taskQueue.RemoveAll(t => t.isComplete);
+
+            if (destroyOnEnd && taskQueue.Count == 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         public void addTask(ScheduleTask task)

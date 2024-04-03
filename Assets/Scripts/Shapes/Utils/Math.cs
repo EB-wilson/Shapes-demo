@@ -13,7 +13,16 @@ namespace Shapes.Utils
             float absAng = Mathf.Atan(y / x)*Mathf.Rad2Deg;
 
             if (x > 0) return absAng;
-            else return absAng + 180;
+            return absAng + 180;
+        }
+
+        public static float approach(float from, float to, float speed)
+        {
+            var diff = to - from;
+            var d = diff > 0 ? 1 : -1;
+            var b = speed > 0 ? 1 : -1;
+
+            return from + Mathf.Min(Mathf.Abs(diff), Mathf.Abs(speed))*d*b;
         }
     }
 }

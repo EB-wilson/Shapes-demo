@@ -68,8 +68,8 @@ namespace Shapes.Logic
 
             if (!isComplete)
             {
-                time += timeDelta;
                 action();
+                time += timeDelta;
             }
 
             if (progressNonInterp >= 1)

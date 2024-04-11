@@ -21,5 +21,11 @@ namespace Shapes.Logic
         protected override void post()
         {
         }
+
+        public override ScheduleTask clone()
+        {
+            return new WorldMoveTask{ duration = duration, beginTime = beginTime, interp = interp,
+                from = from, to = to };
+        }
     }
 }

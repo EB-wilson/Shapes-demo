@@ -5,7 +5,7 @@ namespace Shapes.Components
 {
     public class Health : MonoBehaviour
     {
-        public GameObject deathEffect;
+        public Hittable deathTrigger;
         public Health binding;
         public bool bound;
 
@@ -15,14 +15,19 @@ namespace Shapes.Components
         public float health;
         public float shield;
 
-        private bool deathEffectNotNull;
+        private bool hasTrigger;
 
         // Start is called before the first frame update
         void Start()
         {
-            deathEffectNotNull = deathEffect != null;
             bound = binding != null;
             health = maxHealth;
+            if (deathTrigger == null)
+            {
+                deathTrigger = GetComponent<Hittable>();
+            }
+
+            hasTrigger = deathTrigger != null;
         }
 
         // Update is called once per frame
@@ -59,8 +64,8 @@ namespace Shapes.Components
         {
             damage -= armor;
 
-            bool shieldDestroy = damage >= shield;
-            float shieldDelta = Mathf.Min(shield, damage);
+            var shieldDestroy = damage >= shield;
+            var shieldDelta = Mathf.Min(shield, damage);
             shield -= shieldDelta;
             damage -= shieldDelta;
 
@@ -106,10 +111,9 @@ namespace Shapes.Components
 
         protected virtual void doDestroy()
         {
-            if (deathEffectNotNull)
+            if (hasTrigger)
             {
-                var trans = transform;
-                Instantiate(deathEffect, trans.position, trans.rotation);
+                deathTrigger.onDeath();
             }
 
             Destroy(gameObject);

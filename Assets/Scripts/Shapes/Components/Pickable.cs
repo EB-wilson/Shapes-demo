@@ -13,33 +13,38 @@ namespace Shapes.Components
         SHIELD
     }
 
-    [RequireComponent(typeof(Controllable2D))]
+    [RequireComponent(typeof(Motion))]
     public class Pickable: MonoBehaviour
     {
         public DropType type;
         public int data;
         public float fdata;
+        public float dropSpeed = 60;
+        public float pickSpeed = 80;
 
-        public Controllable2D controllable;
-        public PlayerController controller;
+        [NonSerialized] public Motion motion;
+        [NonSerialized] public PlayerController controller;
+        private bool picked;
 
         private void Start()
         {
-            controllable = GetComponent<Controllable2D>();
+            motion = GetComponent<Motion>();
             controller = GlobalVars.player.GetComponent<PlayerController>();
         }
 
         private void Update()
         {
-            GlobalVars.world.checkBullet(transform);
+            GlobalVars.world.checkBounds(transform);
 
             var player = controller.current.hittable;
             var dst = Vector3.Distance(player.transform.position, transform.position);
 
-            if (dst <= player.adsorptionRange)
+            if (picked || dst <= player.adsorptionRange || player.onPickupLine())
             {
-                var v = player.transform.position - transform.position;
-                controllable.move(Math.angle(v.x, v.y));
+                picked = true;
+                var v = (player.transform.position - transform.position).normalized;
+                var vel = Mathf.Lerp(motion.vel.magnitude, pickSpeed, Time.deltaTime);
+                motion.vel = v * vel;
 
                 if (dst > player.pickupRange) return;
 
@@ -48,7 +53,7 @@ namespace Shapes.Components
             }
             else
             {
-                controllable.move(-90, 0.5f);
+                motion.vel = Vector3.Lerp(motion.vel, new Vector3(0, 0, -dropSpeed), Time.deltaTime);
             }
         }
     }

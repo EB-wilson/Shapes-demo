@@ -3,7 +3,7 @@ using Shapes.Utils;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Shapes.Logic
+namespace Shapes.Logic.ShootPatterns
 {
     public class SerialShoot: ShootPattern
     {
@@ -20,6 +20,11 @@ namespace Shapes.Logic
                     shootCount++;
                 }, i*shootInterval);
             }
+        }
+
+        public override ShootPattern clone()
+        {
+            return new SerialShoot { shoots = shoots, shootInterval = shootInterval, bullet = bullet };
         }
     }
 }

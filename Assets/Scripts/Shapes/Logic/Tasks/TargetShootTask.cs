@@ -9,7 +9,7 @@ namespace Shapes.Logic
 
         protected override void action()
         {
-            var shootRot = Quaternion.LookRotation(target.position - transform.position);
+            var shootRot = Quaternion.LookRotation(target.position - self.transform.position);
             var off = Quaternion.Euler(
                 Random.Range(-spreadRange.x, spreadRange.x),
                 Random.Range(-spreadRange.y, spreadRange.y),
@@ -19,6 +19,13 @@ namespace Shapes.Logic
             shooter.shootRotation = shootRot * off;
 
             base.action();
+        }
+
+        public override ScheduleTask clone()
+        {
+            return new TargetShootTask{ duration = duration, beginTime = beginTime, interp = interp,
+                pattern = pattern.clone(), shoots = shoots,
+                target = target, spreadRange = spreadRange };
         }
 
         protected override void shoot()

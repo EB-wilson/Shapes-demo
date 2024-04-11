@@ -16,5 +16,11 @@ namespace Shapes.Logic
         {
             return genRotation[generatedCount % genRotation.Length];
         }
+
+        public override ScheduleTask clone()
+        {
+            return new PositionGenerateTask { duration = duration, beginTime = beginTime, interp = interp,
+                genPosition = genPosition, genRotation = genRotation};
+        }
     }
 }

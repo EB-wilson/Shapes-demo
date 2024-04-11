@@ -3,7 +3,7 @@ using Shapes.Components;
 using Shapes.Utils;
 using UnityEngine;
 
-namespace Shapes.Logic
+namespace Shapes.Logic.ShootPatterns
 {
     public class MultiShootPattern: ShootPattern
     {
@@ -21,6 +21,18 @@ namespace Shapes.Logic
                 }, shootInterval);
             }
 
+        }
+
+        public override ShootPattern clone()
+        {
+            var res = new MultiShootPattern { shoots = shoots, shootInterval = shootInterval};
+
+            foreach (var pattern in patterns)
+            {
+                res.patterns.Add(pattern.clone());
+            }
+
+            return res;
         }
     }
 }

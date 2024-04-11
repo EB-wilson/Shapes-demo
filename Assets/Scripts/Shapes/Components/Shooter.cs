@@ -26,7 +26,7 @@ namespace Shapes.Components
                 1,
                 1,
                 rotation * shootDirOffset
-            );
+            ).gameObject.SetActive(true);
         }
 
     }

@@ -26,9 +26,16 @@ namespace Shapes.Logic
             }
             else
             {
-                shooter.shootRotation = transform.rotation * shootRot * off;
+                shooter.shootRotation = self.transform.rotation * shootRot * off;
             }
             base.action();
+        }
+
+        public override ScheduleTask clone()
+        {
+            return new DirectionShootTask{ duration = duration, beginTime = beginTime, interp = interp,
+                pattern = pattern.clone(), shoots = shoots,
+                shootBeginRotation = shootBeginRotation, shootEndRotation = shootEndRotation, absolute = absolute, spreadRange = spreadRange};
         }
 
         protected override void shoot()

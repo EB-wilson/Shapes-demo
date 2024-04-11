@@ -8,7 +8,7 @@ namespace Shapes.Logic
     /// <summary>
     /// 时间表事务的基类，提供了时间表执行任务的进度管理等相关API，行为抽象，待实现
     /// </summary>
-    public abstract class ScheduleTask: MonoBehaviour
+    public abstract class ScheduleTask
     {
         /// <summary>
         /// 此任务进行的标准时间，若为0，则此任务将在一次更新中完成所有流程并结束；如果为负数，则此任务会永远运行下去，直到调用<see cref="finalize"/>停止此任务
@@ -33,12 +33,17 @@ namespace Shapes.Logic
         /// <summary>
         /// 任务执行进度的插值函数，输入一个从0到1的值，并产出一个在0到1之间的值
         /// </summary>
-        public Interp[] interps = { Interp.LINEAR };
+        public Func<float, float> interp = Interp.LINEAR.f();
 
         /// <summary>
         /// 此任务当前进行到的进度，已经过插值函数进行插值，若需要获取原始数据，请使用<see cref="progressNonInterp"/>
         /// </summary>
         public float progress => interp(progressNonInterp);
+
+        /// <summary>
+        /// 任务运行在的目标位置（可能还表示一个游戏对象）
+        /// </summary>
+        public GameObject self;
 
         /// <summary>
         /// 此任务当前是否已经完成
@@ -50,8 +55,6 @@ namespace Shapes.Logic
         private bool began;
         private bool posted;
 
-        protected Func<float, float> interp;
-
         public float progressNonInterp => posted? 1: duration < 0? 0: (duration == 0? 1: Mathf.Clamp01(time / duration));
 
         public virtual void update(float timeDelta)
@@ -62,7 +65,6 @@ namespace Shapes.Logic
             if (!began)
             {
                 began = true;
-                interp = interps.Length == 0? f => f: Interps.make(interps);
                 begin();
             }
 
@@ -107,10 +109,11 @@ namespace Shapes.Logic
         /// <summary>
         /// 初始化函数，在任务开始使用之前调用
         /// </summary>
-        public virtual void init()
+        public virtual void init(GameObject target)
         {
             reset();
             initialized = true;
+            self = target;
         }
 
         /// <summary>
@@ -125,5 +128,7 @@ namespace Shapes.Logic
         /// 在任务执行完成后调用，此时任务进度刚好为1
         /// </summary>
         protected abstract void post();
+
+        public abstract ScheduleTask clone();
     }
 }

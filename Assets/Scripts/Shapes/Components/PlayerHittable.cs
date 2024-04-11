@@ -6,17 +6,18 @@ namespace Shapes.Components
 {
     public class PlayerHittable : Hittable
     {
+        [Range(0, 1)] public float pickupLine = 1;
         public float adsorptionRange = 8f;
         public float pickupRange = 2f;
 
-        public void onPickup(Pickable pickable)
+        public virtual void onPickup(Pickable pickable)
         {
             switch (pickable.type)
             {
                 case DropType.SCORE_POINT:
                 {
-                    GlobalVars.player.score += pickable.fdata;
-                    GlobalVars.player.health += pickable.fdata * 0.00001f;
+                    GlobalVars.player.score += pickable.data;
+                    GlobalVars.player.health += pickable.data * 0.0001f;
                     break;
                 }
                 case DropType.POWER:
@@ -37,10 +38,24 @@ namespace Shapes.Components
             }
         }
 
+        public virtual void onGraze(Bullet bullet)
+        {
+            GlobalVars.player.graze++;
+            GlobalVars.player.score += 967;
+        }
+
         public override void onHit(Bullet bullet)
         {
-            GlobalVars.player.health -= 10;
+            GlobalVars.player.health = Mathf.Max(0, GlobalVars.player.health - 12);
+            GlobalVars.player.power = Mathf.Max(0, GlobalVars.player.power - 1);
             GlobalVars.player.miss++;
+        }
+
+        public override void onDeath(){}
+
+        public virtual bool onPickupLine()
+        {
+            return transform.position.z >= GlobalVars.world.viewPortBounds.height * pickupLine;
         }
     }
 }

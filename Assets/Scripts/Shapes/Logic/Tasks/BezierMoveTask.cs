@@ -10,7 +10,7 @@ namespace Shapes.Logic
 
     public class BezierMoveTask: ScheduleTask
     {
-        public List<Vector3> controlPoints = new();
+        public Vector3[] controlPoints;
         public int resolution = 100;
         public bool syncForward;
 
@@ -20,9 +20,9 @@ namespace Shapes.Logic
 
         protected override void begin()
         {
-            beginPos = transform.position;
+            beginPos = self.transform.position;
 
-            var slice = slicePoints(controlPoints.ToArray());
+            var slice = slicePoints(controlPoints);
             var buffPoints = new List<Vector3>();
             buffPoints.Clear();
 
@@ -56,7 +56,7 @@ namespace Shapes.Logic
             var s = pathBuffer[Mathf.Min(i, pathBuffer.Length - 1)];
             var n = pathBuffer[Mathf.Min(i + 1, pathBuffer.Length - 1)];
 
-            var trans = transform;
+            var trans = self.transform;
             trans.position = beginPos + s + (n - s) * t;
             if (syncForward)
             {
@@ -68,6 +68,12 @@ namespace Shapes.Logic
         protected override void post()
         {
 
+        }
+
+        public override ScheduleTask clone()
+        {
+            return new BezierMoveTask { duration = duration, beginTime = beginTime, interp = interp,
+                controlPoints = controlPoints, resolution = resolution, syncForward = syncForward};
         }
 
         /// <summary>

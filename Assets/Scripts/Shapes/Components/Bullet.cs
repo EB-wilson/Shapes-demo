@@ -11,7 +11,6 @@ namespace Shapes.Components
     [RequireComponent(typeof(Collider), typeof(Motion))]
     public class Bullet : MonoBehaviour
     {
-        public int flag;
         public float damage;
         public int pierce;
         public float lifetime = 10;
@@ -26,9 +25,15 @@ namespace Shapes.Components
         public Vector3 fragSpreadRange = new(180, 180, 180);
         public bool fragOnHit = true;
 
+        public int flag;
+
         [NonSerialized] public float time;
         [NonSerialized] public Motion motion;
+        [NonSerialized] public PlayerController player;
         [NonSerialized] public Shooter owner;
+
+        [NonSerialized] public bool outOfRanged;
+        [NonSerialized] public bool grazed;
 
         private List<Hittable> collided = new();
 
@@ -88,6 +93,7 @@ namespace Shapes.Components
         private void Start()
         {
             motion = GetComponent<Motion>();
+            player = GlobalVars.player.GetComponent<PlayerController>();
             motion.vel = direction*new Vector3(0, 0, speed);
         }
 
@@ -99,13 +105,21 @@ namespace Shapes.Components
                 Destroy(gameObject);
             }
 
-            GlobalVars.world.checkBullet(transform);
+            GlobalVars.world.checkBullet(this);
+            GlobalVars.world.checkBounds(transform);
+
+            var playerHittable = player.current.hittable;
+            if (!grazed && playerHittable.flag != flag && Vector3.Distance(playerHittable.transform.position, transform.position) <= 5)
+            {
+                grazed = true;
+                playerHittable.onGraze(this);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
             var hittable = other.gameObject.GetComponent<Hittable>();
-            if (hittable == null || hittable.flag == flag || collided.Contains(hittable)) return; //only hit hittable enemy
+            if (outOfRanged || hittable == null || hittable.flag == flag || collided.Contains(hittable)) return; //only hit hittable enemy
             hittable.onHit(this);
             collided.Add(hittable);
 

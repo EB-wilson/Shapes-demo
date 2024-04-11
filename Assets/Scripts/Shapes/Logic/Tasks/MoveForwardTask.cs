@@ -15,7 +15,7 @@ namespace Shapes.Logic
 
         protected override void action()
         {
-            var trans = transform;
+            var trans = self.transform;
             trans.eulerAngles += moveRot * Time.deltaTime;
             trans.position += trans.forward * (moveSpeed * Time.deltaTime);
         }
@@ -23,6 +23,12 @@ namespace Shapes.Logic
         protected override void post()
         {
 
+        }
+
+        public override ScheduleTask clone()
+        {
+            return new MoveForwardTask{ duration = duration, beginTime = beginTime, interp = interp,
+                moveSpeed = moveSpeed, moveRot = moveRot};
         }
     }
 }

@@ -9,10 +9,11 @@ namespace Shapes.Components
         public float maxHealth = 200;
 
         public float health = 100;
-        public float score;
+        public long score;
         public float power;
         public int bombs;
         public int miss;
+        public int graze;
 
         public float balance = 0.5f;
 

@@ -25,7 +25,7 @@ namespace Shapes.Logic
             }
         }
 
-        public override void init()
+        public override void init(GameObject target)
         {
             initialized = true;
 
@@ -34,7 +34,7 @@ namespace Shapes.Logic
             foreach (var task in tasks)
             {
                 duration = Mathf.Max(duration, task.time + task.duration);
-                task.init();
+                task.init(target);
             }
         }
 
@@ -84,6 +84,18 @@ namespace Shapes.Logic
         protected override void post()
         {
             //no action
+        }
+
+        public override ScheduleTask clone()
+        {
+            var res = new TaskGroup{ circle = circle };
+
+            foreach (var scheduleTask in tasks)
+            {
+                res.tasks.Add(scheduleTask.clone());
+            }
+
+            return res;
         }
     }
 }

@@ -10,5 +10,6 @@ namespace Shapes.Components
         public int flag;
 
         public abstract void onHit(Bullet bullet);
+        public abstract void onDeath();
     }
 }

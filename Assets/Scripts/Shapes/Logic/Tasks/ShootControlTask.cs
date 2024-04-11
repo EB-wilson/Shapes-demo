@@ -14,29 +14,18 @@ namespace Shapes.Logic
 
         public Shooter shooter;
 
-        private bool isOverride;
         private int shootCount;
-
-        private void Start()
-        {
-            if (shooter != null) return;
-
-            var sh = GetComponent<Shooter>();
-            if (sh == null) sh = GetComponent<PlayerShooter>();
-
-            shooter = sh;
-            isOverride = sh.overrideDir;
-        }
 
         public override void reset()
         {
             base.reset();
-            isOverride = false;
             shootCount = 0;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         protected override void begin()
         {
+            shooter = self.GetComponent<Shooter>();
             shooter.overrideDir = true;
         }
 
@@ -57,7 +46,7 @@ namespace Shapes.Logic
 
         protected override void post()
         {
-            shooter.overrideDir = isOverride;
+            shooter.overrideDir = false;
         }
 
         protected abstract void shoot();

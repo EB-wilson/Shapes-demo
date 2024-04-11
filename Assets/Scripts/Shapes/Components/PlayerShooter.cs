@@ -5,10 +5,51 @@ using UnityEngine;
 
 namespace Shapes.Components
 {
+    public class ShootWrap
+    {
+        public ShootPattern pattern;
+        public float shootInterval;
+
+        public float lastShootTime;
+
+        public ShootWrap(ShootPattern pattern, float shootInterval)
+        {
+            this.pattern = pattern;
+            this.shootInterval = shootInterval;
+        }
+
+        public virtual void update(Shooter shooter)
+        {
+
+            if (lastShootTime + shootInterval < Time.time)
+            {
+                lastShootTime = Time.time;
+                pattern.shoot(shooter);
+            }
+        }
+    }
+
+    public class MultiWrap: ShootWrap
+    {
+        public ShootWrap[] wraps;
+
+        public MultiWrap(params ShootWrap[] wraps) : base(null, 0)
+        {
+            this.wraps = wraps;
+        }
+
+        public override void update(Shooter shooter)
+        {
+            foreach (var wrap in wraps)
+            {
+                wrap.update(shooter);
+            }
+        }
+    }
+
     public class PlayerShooter : Shooter
     {
-        public float shootInterval = 0.1f;
-        public ShootPattern[] shootPattern;
+        public ShootWrap[] shootWraps;
 
         public float minDamageScl = 0.4f;
         public float balanceMin = 0.2f;
@@ -17,7 +58,6 @@ namespace Shapes.Components
         //public bool shooting;
 
         [NonSerialized] public bool isShift;
-        protected float lastShootTime;
 
         public override float damageScl
         {
@@ -30,12 +70,7 @@ namespace Shapes.Components
 
         public void shooting()
         {
-
-                if (lastShootTime + shootInterval < Time.time)
-                {
-                    lastShootTime = Time.time;
-                    shootPattern[Mathf.Min((int)GlobalVars.player.power, shootPattern.Length - 1)].shoot(this);
-                }
+            shootWraps[Mathf.Min((int)GlobalVars.player.power, shootWraps.Length - 1)].update(this);
         }
     }
 }

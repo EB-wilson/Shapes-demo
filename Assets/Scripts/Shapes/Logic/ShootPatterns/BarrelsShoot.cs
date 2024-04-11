@@ -4,11 +4,11 @@ using Shapes.Utils;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Shapes.Logic
+namespace Shapes.Logic.ShootPatterns
 {
     public class BarrelsShoot: ShootPattern
     {
-        public Bullet[] bullet;
+        public Bullet[] bullets;
         /// <summary>
         /// 发射管信息列表，每两个向量为一组，前一个数据表示发射位置偏移，第二个表示发射角度的偏移
         /// </summary>
@@ -32,10 +32,15 @@ namespace Shapes.Logic
                     if(shooter.IsDestroyed()) return;
                     var n = shootCount*2 % shootBarrels.Length;
 
-                    shooter.shoot(bullet[shootCount%bullet.Length], shooter.shootOffset + shootBarrels[n], Quaternion.Euler(shootBarrels[n + 1]));
+                    shooter.shoot(bullets[shootCount%bullets.Length], shooter.shootOffset + shootBarrels[n], Quaternion.Euler(shootBarrels[n + 1]));
                     shootCount++;
                 }, (int)(i/(float)group)*shootInterval);
             }
+        }
+
+        public override ShootPattern clone()
+        {
+            return new BarrelsShoot{ shoots = shoots, shootInterval = shootInterval, shootBarrels = shootBarrels, bullets = bullets, group = group};
         }
     }
 }

@@ -12,14 +12,14 @@ namespace Shapes.Logic
 
         protected override void begin()
         {
-            var trans = transform;
+            var trans = self.transform;
             beginPos = trans.position;
             beginRot = trans.rotation;
         }
 
         protected override void action()
         {
-            var trans = transform;
+            var trans = self.transform;
             trans.rotation = Quaternion.Lerp(beginRot, moveRot, progress);
             trans.position = beginPos + moveVec * progress;
         }
@@ -27,6 +27,12 @@ namespace Shapes.Logic
         protected override void post()
         {
 
+        }
+
+        public override ScheduleTask clone()
+        {
+            return new MovementTask{ duration = duration, beginTime = beginTime, interp = interp,
+                moveVec = moveVec, moveRot = moveRot};
         }
     }
 }

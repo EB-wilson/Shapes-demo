@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Shapes.Logic
 {
     /// <summary>
@@ -9,7 +11,7 @@ namespace Shapes.Logic
 
         public override bool isComplete => executing >= tasks.Count;
 
-        public override void init()
+        public override void init(GameObject target)
         {
             initialized = true;
 
@@ -18,7 +20,7 @@ namespace Shapes.Logic
             foreach (var task in tasks)
             {
                 duration += task.duration;
-                task.init();
+                task.init(target);
             }
         }
 

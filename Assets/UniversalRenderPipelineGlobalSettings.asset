@@ -16,7 +16,7 @@ MonoBehaviour:
   m_RenderingLayerNames:
   - Default
   - Layer 1
-  - Layer 2
+  - Bloom
   m_ValidRenderingLayers: 7
   lightLayerName0: 
   lightLayerName1: 

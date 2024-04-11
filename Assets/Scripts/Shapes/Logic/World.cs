@@ -9,7 +9,7 @@ namespace Shapes.Logic
     /// <summary>
     /// 保存关于世界的一些信息和行为，主要为被动调用逻辑
     /// </summary>
-    [RequireComponent(typeof(Schedule))]
+    [RequireComponent(typeof(ScheduleObject))]
     public class World : MonoBehaviour
     {
         public Rect worldBounds;
@@ -24,11 +24,13 @@ namespace Shapes.Logic
         public float velMul = 2;
 
         [NonSerialized] public Terrain terrain;
+        [NonSerialized] public ScheduleObject schedule;
 
         void Awake()
         {
             GlobalVars.world = this;
             terrain = GetComponent<Terrain>();
+            schedule = GetComponent<ScheduleObject>();
         }
 
         void Update()
@@ -52,9 +54,27 @@ namespace Shapes.Logic
             target.motion.hasten(new Vector3(diff.x, 0, diff.y));
         }
 
-        public void checkBullet(Transform obj)
+        public void checkBullet(Bullet bullet)
+        {
+            var pos = bullet.transform.position;
+
+            var edge = new Rect(
+                viewPortBounds.x,
+                viewPortBounds.y,
+                viewPortBounds.width,
+                viewPortBounds.height
+            );
+            if (!edge.Contains(new Vector2(pos.x, pos.z)))
+            {
+                bullet.outOfRanged = true;
+            }
+        }
+
+        public void checkBounds(Transform obj)
         {
             var pos = obj.position;
+
+
             var bound = new Rect(
                 viewPortBounds.x - clampBound,
                 viewPortBounds.y - clampBound,

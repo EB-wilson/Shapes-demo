@@ -23,6 +23,11 @@ namespace Shapes.Utils
     {
         private static Dictionary<Interp, Func<float, float>> interps = new();
 
+        public static Func<float, float> f(this Interp x)
+        {
+            return interps[x];
+        }
+
         static Interps()
         {
             interps[Interp.LINEAR] = f => f;

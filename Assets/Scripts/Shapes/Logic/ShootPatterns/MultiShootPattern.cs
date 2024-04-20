@@ -18,14 +18,14 @@ namespace Shapes.Logic.ShootPatterns
                     {
                         pattern.shoot(shooter);
                     }
-                }, shootInterval);
+                }, firstInterval + shootInterval*i);
             }
 
         }
 
         public override ShootPattern clone()
         {
-            var res = new MultiShootPattern { shoots = shoots, shootInterval = shootInterval};
+            var res = new MultiShootPattern { shoots = shoots, firstInterval = firstInterval, shootInterval = shootInterval };
 
             foreach (var pattern in patterns)
             {

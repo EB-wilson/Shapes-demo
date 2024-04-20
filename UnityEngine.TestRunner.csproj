@@ -111,8 +111,8 @@
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\Utils\AssemblyProvider\IAssemblyLoadProxy.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\TestRunner\TestEnumeratorWrapper.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\Utils\QuaternionEqualityComparer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Runner\PlaymodeWorkItemFactory.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Commands\ImmediateEnumerableCommand.cs" />
+    <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Runner\PlaymodeWorkItemFactory.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\Utils\AssemblyProvider\AssemblyLoadProxy.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Commands\EnumerableApplyChangesToContextCommand.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEngine.TestRunner\NUnitExtensions\Attributes\UnityCombinatorialStrategy.cs" />

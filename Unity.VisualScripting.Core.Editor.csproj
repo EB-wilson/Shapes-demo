@@ -326,8 +326,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\Primitives\SbyteInspector.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\ReorderableList\GenericListAdaptor.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Serialization\MovedFromAttributeExtensions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Interface\Fonts\FontVariant.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\Primitives\ContinuousNumberDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Interface\Fonts\FontVariant.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Plugin\Changelogs\LegacyLudiqCore\Changelog_1_0_0.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Plugin\Changelogs\Changelog_1_4_0.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\Inspector.cs" />
@@ -365,8 +365,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Plugin\Changelogs\LegacyLudiqGraphs\Changelog_1_4_2.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Utilities\Clipboard.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Interface\Colors\ColorPalette.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\InspectorBlock.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Utilities\MathfEx.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\InspectorBlock.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Widgets\GraphElementWidget.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Windows\ICanvasWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Context\GraphClipboard.cs" />
@@ -418,8 +418,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Utilities\UnityAPI.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\SemanticVersion.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Interface\Fonts\FontWeight.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\Primitives\DecimalInspector.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Meta\ProxyMetadata.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\Primitives\DecimalInspector.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Meta\EditorPrefMetadata.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Plugin\BoltCore.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Plugin\Changelogs\LegacyLudiqGraphs\Changelog_1_4_1.cs" />
@@ -429,9 +429,9 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Utilities\Warning.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\EditorProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Plugins\PluginAcknowledgement.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\ResourceProviders\IResourceProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Description\IMacroDescription.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Variables\InspectorVariableFieldAttributeInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\ResourceProviders\IResourceProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Reflection\ParameterStringMode.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Reflection\EnumOption.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Inspection\Other\DictionaryAssetEditor.cs" />

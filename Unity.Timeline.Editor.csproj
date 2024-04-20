@@ -172,10 +172,10 @@
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\treeview\Drawers\InfiniteTrackDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Utilities\KeyTraverser.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Manipulators\Trim\TrimItemModeRipple.cs" />
-    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Window\TimelineWindow_HeaderGui.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\treeview\ManipulationsClips.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Window\ViewModel\ScriptableObjectViewPrefs.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Animation\AnimationClipCurveCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Window\TimelineWindow_HeaderGui.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Utilities\Scopes\IndentLevelScope.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Undo\UndoExtensions.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Extensions\AnimationTrackExtensions.cs" />
@@ -315,8 +315,8 @@
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\inspectors\CurvesOwner\ICurvesOwnerInspectorWrapper.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Manipulators\HeaderSplitterManipulator.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Window\OverlayDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\treeview\TimelineClipUnion.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Window\TimelineWindow_TimeCursor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\treeview\TimelineClipUnion.cs" />
     <None Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\Unity.Timeline.Editor.asmdef" />
     <None Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\StyleSheets\res\Timeline_LightSkin.txt" />
     <None Include="Library\PackageCache\com.unity.timeline@1.7.6\Editor\StyleSheets\Extensions\dark.uss" />

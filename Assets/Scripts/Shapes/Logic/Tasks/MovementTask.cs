@@ -6,6 +6,7 @@ namespace Shapes.Logic
     {
         public Vector3 moveVec;
         public Quaternion moveRot;
+        public bool noRot;
 
         private Vector3 beginPos;
         private Quaternion beginRot;
@@ -20,7 +21,7 @@ namespace Shapes.Logic
         protected override void action()
         {
             var trans = self.transform;
-            trans.rotation = Quaternion.Lerp(beginRot, moveRot, progress);
+            if (!noRot) trans.rotation = Quaternion.Slerp(beginRot, moveRot, progress);
             trans.position = beginPos + moveVec * progress;
         }
 
@@ -32,7 +33,7 @@ namespace Shapes.Logic
         public override ScheduleTask clone()
         {
             return new MovementTask{ duration = duration, beginTime = beginTime, interp = interp,
-                moveVec = moveVec, moveRot = moveRot};
+                moveVec = moveVec, moveRot = moveRot, noRot = noRot };
         }
     }
 }

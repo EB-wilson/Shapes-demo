@@ -46,12 +46,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Shapes\Components\Controllable2D.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\SpeedRotateTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Logic.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\SyncCamSettings.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\PlayerHittable.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\SpeedControlTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\GameInst\PlayerEntity\FragmentSetter.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\DirectionShootTask.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\CurveMoveTask.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\DestroyTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\GenerateTask.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Components\Effect.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\TargetShootTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Utils\Interps.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Health.cs" />
@@ -65,9 +70,9 @@
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\WorldMoveTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Utils\BulletGroup.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\ICloneable.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\EnemyHittable.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\ScheduleTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Pickable.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\ScheduleObject.cs" />
     <Compile Include="Assets\Scripts\Shapes\UI\ViewLogic.cs" />
@@ -87,11 +92,13 @@
     <Compile Include="Assets\Scripts\Shapes\Logic\ShootPattern.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\PlayerControllable2D.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Hittable.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\ScheduleTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Shooter.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\ActionTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\GameInst\Prefabs.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\PlayerShooter.cs" />
     <Compile Include="Assets\Scripts\Shapes\Components\Motion.cs" />
-    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\BezierMoveTask.cs" />
+    <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\RotSpeedControlTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\Tasks\MoveForwardTask.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\ShootPatterns\BarrelsShoot.cs" />
     <Compile Include="Assets\Scripts\Shapes\Logic\EntitySetter.cs" />
@@ -683,6 +690,10 @@
     <ProjectReference Include="Unity.Burst.Player.csproj">
       <Project>{2ce4272d-c40c-0280-a1f5-1361d990b56f}</Project>
       <Name>Unity.Burst.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.Player.csproj">
+      <Project>{30c6a5d9-586b-09fc-458c-f7eaefb8aa2e}</Project>
+      <Name>Unity.ProBuilder.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
       <Project>{d731f27f-70f9-61a8-ec7e-240fb50ed459}</Project>

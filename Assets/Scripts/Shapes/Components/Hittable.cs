@@ -8,6 +8,8 @@ namespace Shapes.Components
     public abstract class Hittable : MonoBehaviour
     {
         public int flag;
+        public bool hittable = true;
+        public bool damageable = true;
 
         public abstract void onHit(Bullet bullet);
         public abstract void onDeath();

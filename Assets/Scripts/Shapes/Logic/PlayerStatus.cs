@@ -29,7 +29,7 @@ namespace Shapes.Components
 
         public float damageBalance(bool shift)
         {
-            return shift ? balance : -balance;
+            return shift ? 1 - balance: balance;
         }
     }
 }

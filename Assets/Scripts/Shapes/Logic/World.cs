@@ -97,9 +97,8 @@ namespace Shapes.Logic
             var heightDis = viewPortBounds.height - viewPort.height;
 
             var pl = player.transform.position;
-            var position = pl;
-            var xRate = position.x / viewPortBounds.width;
-            var yRate = position.z / viewPortBounds.height;
+            var xRate = pl.x / viewPortBounds.width;
+            var yRate = pl.z / viewPortBounds.height;
 
             var trans = cam.transform;
             var pos = new Vector3(

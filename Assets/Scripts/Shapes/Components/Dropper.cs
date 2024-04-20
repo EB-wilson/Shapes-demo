@@ -20,7 +20,7 @@ namespace Shapes.Components
 
             for (var i = 0; i < drops; i++)
             {
-                var l = dropIndex == null? i: dropIndex[i % dropIndex.Length];
+                var l = dropIndex == null || dropIndex.Length == 0? i: dropIndex[i % dropIndex.Length];
                 var drop = dropList[l % dropList.Length];
 
                 var ang = (dropRotation + dropSpread*i + Random.Range(-dropRandSpread, dropRandSpread))*Mathf.Deg2Rad;

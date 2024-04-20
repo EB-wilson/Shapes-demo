@@ -196,8 +196,8 @@
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\GUI\TestListBuilder\TestFilterSettings.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestLaunchers\PlayerLauncher.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestRun\Tasks\CleanupVerificationTask.cs" />
-    <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestLaunchers\PlatformSetup\IPlatformSetup.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestRunner\EditModePCHelper.cs" />
+    <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestLaunchers\PlatformSetup\IPlatformSetup.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestRun\TestJobRunner.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\UnityTestProtocol\TestState.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestLaunchers\RemoteTestResultReciever.cs" />

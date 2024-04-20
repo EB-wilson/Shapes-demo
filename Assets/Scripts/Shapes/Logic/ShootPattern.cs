@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Shapes.Logic
 {
-    public abstract class ShootPattern
+    public abstract class ShootPattern: ICloneable<ShootPattern>
     {
         public int shoots;
+        public float firstInterval;
         public float shootInterval;
 
         protected int shootCount;

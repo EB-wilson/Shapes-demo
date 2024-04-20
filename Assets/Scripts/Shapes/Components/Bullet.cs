@@ -8,15 +8,16 @@ using Random = UnityEngine.Random;
 
 namespace Shapes.Components
 {
-    [RequireComponent(typeof(Collider), typeof(Motion))]
-    public class Bullet : MonoBehaviour
+    [RequireComponent(typeof(Collider), typeof(Rigidbody), typeof(Motion))]
+    public class Bullet : ScheduleObject
     {
         public float damage;
         public int pierce;
-        public float lifetime = 10;
 
         public float speed;
         public Quaternion direction;
+
+        public Effect hitEffect;
 
         public Bullet fragmentBullet;
         public int frags = 1;
@@ -27,7 +28,6 @@ namespace Shapes.Components
 
         public int flag;
 
-        [NonSerialized] public float time;
         [NonSerialized] public Motion motion;
         [NonSerialized] public PlayerController player;
         [NonSerialized] public Shooter owner;
@@ -39,7 +39,7 @@ namespace Shapes.Components
 
         public Bullet create(Vector3 position, int flagP)
         {
-            var res = Instantiate(this);
+            var res = (Bullet)makeInst();
             res.transform.position = position;
             res.flag = flagP;
 
@@ -47,20 +47,19 @@ namespace Shapes.Components
         }
         public Bullet create(Vector3 position, int flagP, Quaternion dir)
         {
-            var res = Instantiate(this);
+            var res = (Bullet)makeInst();
             res.flag = flagP;
             res.transform.position = position;
             res.direction = dir;
 
             return res;
         }
-        public Bullet create(Vector3 position, int flagP, float damageScl, float lifeScl, float speedScl, Quaternion dir)
+        public Bullet create(Vector3 position, int flagP, float damageScl, float speedScl, Quaternion dir)
         {
-            var res = Instantiate(this);
+            var res = (Bullet)makeInst();
             res.flag = flagP;
             res.transform.position = position;
             res.damage = damage*damageScl;
-            res.lifetime = lifetime*lifeScl;
             res.speed = speed*speedScl;
             res.direction = dir;
 
@@ -68,7 +67,7 @@ namespace Shapes.Components
         }
         public Bullet create(Shooter ownerP, Vector3 position, Quaternion dir)
         {
-            var res = Instantiate(this);
+            var res = (Bullet)makeInst();
             res.owner = ownerP;
             res.flag = ownerP.flag;
             res.transform.position = position;
@@ -78,32 +77,28 @@ namespace Shapes.Components
         }
         public Bullet create(Shooter ownerP, Vector3 position, float damageScl, float lifeScl, float speedScl, Quaternion dir)
         {
-            var res = Instantiate(this);
+            var res = (Bullet)makeInst();
             res.owner = ownerP;
             res.flag = ownerP.flag;
             res.transform.position = position;
             res.damage = damage*damageScl;
-            res.lifetime = lifetime*lifeScl;
             res.speed = speed*speedScl;
             res.direction = dir;
 
             return res;
         }
 
-        private void Start()
+        private new void Start()
         {
+            base.Start();
             motion = GetComponent<Motion>();
             player = GlobalVars.player.GetComponent<PlayerController>();
             motion.vel = direction*new Vector3(0, 0, speed);
         }
 
-        private void Update()
+        private new void Update()
         {
-            time += Time.deltaTime;
-            if (time >= lifetime)
-            {
-                Destroy(gameObject);
-            }
+            base.Update();
 
             GlobalVars.world.checkBullet(this);
             GlobalVars.world.checkBounds(transform);
@@ -119,12 +114,17 @@ namespace Shapes.Components
         private void OnTriggerEnter(Collider other)
         {
             var hittable = other.gameObject.GetComponent<Hittable>();
-            if (outOfRanged || hittable == null || hittable.flag == flag || collided.Contains(hittable)) return; //only hit hittable enemy
+            if (outOfRanged || hittable == null || !hittable.hittable || hittable.flag == flag || collided.Contains(hittable)) return; //only hit hittable enemy
             hittable.onHit(this);
+            if (hitEffect is not null)
+            {
+                var trans = transform;
+                hitEffect.makeInst(trans.position, trans.rotation);
+            }
             collided.Add(hittable);
 
             var health = other.gameObject.GetComponent<Health>();
-            if (health != null)
+            if (health != null && hittable.damageable)
             {
                 health.damage(damage);
             }

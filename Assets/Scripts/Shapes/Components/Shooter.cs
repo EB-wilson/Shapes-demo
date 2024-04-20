@@ -16,17 +16,20 @@ namespace Shapes.Components
 
         public virtual float damageScl => 1;
 
-        public virtual void shoot(Bullet bullet, Vector3 offset, Quaternion shootDirOffset)
+        public virtual Bullet shoot(Bullet bullet, Vector3 offset, Quaternion shootDirOffset)
         {
             var rotation = overrideDir? shootRotation: transform.rotation;
-            bullet.create(
+            var res = bullet.create(
                 this,
                 transform.position + rotation * (offset + shootOffset),
                 damageScl,
                 1,
                 1,
                 rotation * shootDirOffset
-            ).gameObject.SetActive(true);
+            );
+
+            res.gameObject.SetActive(true);
+            return res;
         }
 
     }

@@ -6,6 +6,7 @@ namespace Shapes.Components
 {
     public class PlayerHittable : Hittable
     {
+        public Effect grazeEffect;
         [Range(0, 1)] public float pickupLine = 1;
         public float adsorptionRange = 8f;
         public float pickupRange = 2f;
@@ -40,6 +41,12 @@ namespace Shapes.Components
 
         public virtual void onGraze(Bullet bullet)
         {
+            if (grazeEffect is not null)
+            {
+                var trans = transform;
+                grazeEffect.makeInst(trans.position, trans.rotation);
+            }
+
             GlobalVars.player.graze++;
             GlobalVars.player.score += 967;
         }
@@ -55,7 +62,7 @@ namespace Shapes.Components
 
         public virtual bool onPickupLine()
         {
-            return transform.position.z >= GlobalVars.world.viewPortBounds.height * pickupLine;
+            return pickupLine < 1 && transform.position.z >= GlobalVars.world.viewPortBounds.height * pickupLine;
         }
     }
 }

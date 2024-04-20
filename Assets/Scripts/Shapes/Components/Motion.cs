@@ -10,8 +10,11 @@ namespace Shapes.Components
     public class Motion : MonoBehaviour
     {
         public Vector3 vel;
+        public float rotSpeed;
         public bool facingVelDir;
         public bool paused;
+
+        private float rot;
 
         public float speed
         {
@@ -38,11 +41,15 @@ namespace Shapes.Components
         {
             if (paused) return;
 
-            transform.position += vel * Time.deltaTime;
-
-            if (!facingVelDir) return;
             var trans = transform;
-            trans.LookAt(trans.position + vel);
+            trans.position += vel * Time.deltaTime;
+            rot += rotSpeed * Time.deltaTime;
+
+            if (facingVelDir)
+            {
+                trans.LookAt(trans.position + vel);
+            }
+            trans.Rotate(Vector3.forward, rot);
         }
 
         public void stop()
@@ -78,6 +85,11 @@ namespace Shapes.Components
         public void hasten(Vector3 vec)
         {
             vel += vec;
+        }
+
+        public void rotHasten(float ds)
+        {
+            rotSpeed += ds;
         }
     }
 }

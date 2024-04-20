@@ -18,13 +18,14 @@ namespace Shapes.Logic.ShootPatterns
                     if(shooter.IsDestroyed()) return;
                     shooter.shoot(bullet, Vector3.zero, Quaternion.identity);
                     shootCount++;
-                }, i*shootInterval);
+                }, firstInterval + i*shootInterval);
             }
         }
 
         public override ShootPattern clone()
         {
-            return new SerialShoot { shoots = shoots, shootInterval = shootInterval, bullet = bullet };
+            return new SerialShoot { shoots = shoots, firstInterval = firstInterval, shootInterval = shootInterval,
+                bullet = bullet };
         }
     }
 }

@@ -15,14 +15,6 @@ namespace Shapes.Logic.ShootPatterns
         public Vector3[] shootBarrels;
         public int group = 1;
 
-        private void Start()
-        {
-            if (shootBarrels.Length%2 != 0)
-            {
-                throw new ArgumentException("shootBarrels format error");
-            }
-        }
-
         public override void shoot(Shooter shooter)
         {
             for (var i = 0; i < shoots; i++)
@@ -34,13 +26,14 @@ namespace Shapes.Logic.ShootPatterns
 
                     shooter.shoot(bullets[shootCount%bullets.Length], shooter.shootOffset + shootBarrels[n], Quaternion.Euler(shootBarrels[n + 1]));
                     shootCount++;
-                }, (int)(i/(float)group)*shootInterval);
+                }, firstInterval + (int)(i/(float)group)*shootInterval);
             }
         }
 
         public override ShootPattern clone()
         {
-            return new BarrelsShoot{ shoots = shoots, shootInterval = shootInterval, shootBarrels = shootBarrels, bullets = bullets, group = group};
+            return new BarrelsShoot{ shoots = shoots, firstInterval = firstInterval, shootInterval = shootInterval,
+                shootBarrels = shootBarrels, bullets = bullets, group = group};
         }
     }
 }

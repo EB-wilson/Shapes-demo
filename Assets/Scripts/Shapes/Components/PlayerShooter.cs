@@ -51,9 +51,9 @@ namespace Shapes.Components
     {
         public ShootWrap[] shootWraps;
 
-        public float minDamageScl = 0.4f;
+        public float minDamageScl = 0.5f;
         public float balanceMin = 0.2f;
-        public float balanceMax = 0.6f;
+        public float balanceMax = 0.65f;
 
         //public bool shooting;
 
@@ -64,7 +64,7 @@ namespace Shapes.Components
             get
             {
                 var r = Mathf.Clamp01(Mathf.Max(GlobalVars.player.damageBalance(isShift) - balanceMin, 0)/(balanceMax - balanceMin));
-                return Mathf.Clamp01(minDamageScl + r*(1 - minDamageScl));
+                return Mathf.Clamp01(minDamageScl + r*minDamageScl);
             }
         }
 

@@ -71,12 +71,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212c1d5a4dbc42eebaf278e170875eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flag: 0
+  pause: 0
+  destroyOnEnd: 0
+  time: 0
   damage: 10
   pierce: 0
-  lifetime: 10
-  speed: 125
+  speed: 25
   direction: {x: 0, y: 0, z: 0, w: 0}
+  hitEffect: {fileID: 2963195470177347747, guid: ba40cd7e7e2ba4946b51164b1645fea6,
+    type: 3}
   fragmentBullet: {fileID: 0}
   frags: 1
   fragSpeedSclMin: 1
@@ -85,8 +88,7 @@ MonoBehaviour:
   fragLifeSclMax: 1
   fragSpreadRange: {x: 180, y: 180, z: 180}
   fragOnHit: 1
-  outOfRanged: 0
-  grazed: 0
+  flag: 0
 --- !u!114 &1706011605963025591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vel: {x: 0, y: 0, z: 0}
+  rotSpeed: 0
   facingVelDir: 1
   paused: 0
 --- !u!54 &5765288413978661084
@@ -180,14 +183,14 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 935a42a88bb73f74facfdb1ac9ae5f55, type: 2}

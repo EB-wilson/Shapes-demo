@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vel: {x: 0, y: 0, z: 0}
+  rotSpeed: 0
   facingVelDir: 0
   paused: 0
 --- !u!114 &-7418880578618656766
@@ -159,10 +160,9 @@ MonoBehaviour:
   shootOffset: {x: 0, y: 0, z: 0}
   overrideDir: 0
   shootRotation: {x: 0, y: 0, z: 0, w: 0}
-  shootInterval: 0.3
-  minDamageScl: 0.4
-  balanceMin: 0.2
-  balanceMax: 0.6
+  minDamageScl: 0.5
+  balanceMin: 0.4
+  balanceMax: 0.75
 --- !u!114 &4776002131533842608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
+  hittable: 1
+  damageable: 1
+  grazeEffect: {fileID: 7585402840707395645, guid: 327d8b100702c3346b1e3a4a74757dcf,
+    type: 3}
   pickupLine: 0.7
   adsorptionRange: 8
   pickupRange: 2
@@ -191,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce49fa51eee71154d851badb5388bf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  world: {fileID: 0}
 --- !u!1 &8605093432171098857
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +258,6 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c203f63582f45bf4d823b55b138abb7a, type: 2}
   - {fileID: 2100000, guid: e34c4cd97a44f1c4887a91f277248f7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

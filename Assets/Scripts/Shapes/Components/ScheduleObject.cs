@@ -18,7 +18,7 @@ namespace Shapes.Components
 
         public int queueTasks => taskList.Count;
 
-        private void Start()
+        protected void Start()
         {
             foreach (var task in taskList)
             {
@@ -26,7 +26,7 @@ namespace Shapes.Components
             }
         }
 
-        private void Update()
+        protected void Update()
         {
             updateTasks(Time.deltaTime);
         }
@@ -95,6 +95,7 @@ namespace Shapes.Components
             return makeInst(trans.position, trans.rotation);
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public ScheduleObject makeInst(Vector3 pos, Quaternion rot)
         {
             var res = Instantiate(gameObject, pos, rot).GetComponent<ScheduleObject>();

@@ -7,7 +7,7 @@ namespace Shapes.Components
     [RequireComponent(typeof(Health))]
     public class EnemyHittable: Hittable
     {
-        public GameObject deathEffect;
+        public Effect deathEffect;
         public int killScore = 12000;
         public int hitScore = 71;
 
@@ -33,7 +33,7 @@ namespace Shapes.Components
             if (deathEffectNotNull)
             {
                 var trans = transform;
-                Instantiate(deathEffect, trans.position, trans.rotation);
+                deathEffect.makeInst(trans.position, trans.rotation);
             }
         }
     }

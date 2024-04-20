@@ -164,10 +164,10 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Debugging\DebugUI.Panel.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Camera\CameraSwitcher.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Lighting\ProbeVolume\ProbeReferenceVolumeProfile.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Textures\Texture2DAtlasDynamic.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Debugging\DebugFrameTiming.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Utilities\ColorUtils.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Textures\Texture2DAtlasDynamic.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Debugging\Prefabs\Scripts\DebugUIHandlerFoldout.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Utilities\ColorUtils.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Debugging\Prefabs\Scripts\DebugUIHandlerObjectPopupField.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Lighting\ProbeVolume\ProbeVolume.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@14.0.9\Runtime\Debugging\Prefabs\Scripts\DebugUIHandlerMessageBox.cs" />
